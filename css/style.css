@@ -1,0 +1,192 @@
+*{
+    padding: 0%;
+    margin: 0%;
+    box-sizing: border-box;
+}
+
+/* ////////////////////////////////////////////////caraga de autos */
+body{
+    background-image:url(/image/ChatGPT\ Image\ 5\ oct\ 2026\,\ 04_43_08\ p.m..png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+h1{
+    font-family: isometra;
+    font-size: 40px;
+    color: rgb(0 217 255);
+    text-align: center;
+    text-shadow: rgb(68, 212, 248) 0px 0px 7px;
+}
+
+.subtitulo{
+    padding: 10px 0px 5px 0px;
+    font-family: "Caprasimo", serif;
+    font-weight: 400;
+    font-style: normal;
+    color:  rgb(68, 212, 248);
+}
+
+.hr{
+    border: none;
+    height: 2px;
+    width:  auto;
+    background-color: rgb(24 164 199) ;
+    margin-bottom: 9px;
+}
+.caja-inputs{
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.caja-inputs input{
+    height: 30px;
+    border-color:rgb(68, 212, 248) ;
+    border-radius: 5px;
+}
+
+.caja-check{
+    padding: 10px 0px;
+}
+
+.btn-agregar{
+    width: stretch;
+    padding: 6px;
+    margin: 10px 20px 0px 20px;
+    border-radius: 5px;
+    border-color: rgb(24 164 199);
+    background: #020024;
+    background: radial-gradient(circle, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+    color: aliceblue;
+    font-family: caprasimo;
+}
+
+form{
+    font-family: monospace;
+    font-size: 15px;
+    color: white;
+    
+}
+
+
+.label{
+    margin-top: 16px;
+    
+}
+.caja-autos{
+border: solid 2px rgb(68, 212, 248);
+border-radius: 5px;
+margin: 20px 10px;
+padding: 0px 15px 15px;
+box-shadow: rgb(68, 212, 248) 0px 0px 15px;
+background-color: #00000091;
+
+
+}
+
+
+/* //////////////////////////////////////////////////////aparicion de lista de autos */
+.lista-de-autos{
+display: flex;
+flex-direction: column;
+border: solid 2px rgb(68, 212, 248);
+border-radius: 5px;
+margin: 20px 10px;
+padding: 15px 15px;
+box-shadow: rgb(68, 212, 248) 0px 0px 8px;
+background-color: #00000091;
+    font-family: monospace;
+    font-size: 15px;
+}
+
+.lista-de-autos li{
+    border: solid 1px  rgb(68, 212, 248);
+    margin: 7px 0px;
+    padding: 5px;
+    border-radius: 6px;
+    width: 90%;
+    list-style: none;
+    color: white;
+}
+
+
+
+/* seccion de resumen de autos */
+.container-caja-resumen{
+    border: solid 2px rgb(68, 212, 248);
+    border-radius: 5px;
+    margin: 20px 10px;
+    padding: 15px;
+    box-shadow: rgb(68, 212, 248) 0px 0px 15px;
+    background-color: #00000091;
+}
+
+.caja-botones{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 15px;
+    
+}
+
+.caja-botones button{
+    border: solid 2px rgb(68, 212, 248);
+    border-radius: 5px;
+    background: linear-gradient(0deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+    color: white;
+    font-family: monospace;
+    padding: 6px;
+
+}
+
+.resultados{
+    border: solid 2px rgb(68, 212, 248);
+    border-radius: 5px;
+    margin: 15px 0px;
+    padding: 12px;
+    color: white;
+    background-color: black;
+    font-family: monospace;
+    font-size: 15px;
+}
+
+.resultados p{
+    margin-bottom: 8px;
+}
+
+.total-destacado{
+    margin: 8px 0px;
+    border-top: 1px solid  rgb(68, 212, 248);
+    font-family: caprasimo;
+    color: #00ff0a;
+    font-size: 18px;
+}
+
+
+
+.caja-btn-reset{
+    display: flex;
+    justify-content: center;
+    
+}
+.btn-reset{
+    width: stretch;
+    padding: 6px;
+    margin: 10px 20px 0px 20px;
+    background-color: #ff0000;
+    box-shadow:  rgb(206, 5, 5) 0px 0px 10px;
+    border-color: #7c0505;
+    border-radius: 5px;
+    font-family: caprasimo;
+    color: white;
+}
+
+/* //////////////////////////////////////////////////////footer */
+
+footer p{
+    color: slategray;
+    font-size: 12px;
+    padding: 10px;
+    text-align: center;
+    font-family: fantasy;
+}

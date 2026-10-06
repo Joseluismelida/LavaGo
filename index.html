@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- tipografia -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Caveat:wght@400..700&family=Indie+Flower&family=Isometra&display=swap" rel="stylesheet">
+
+
+<link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚗</text></svg>">
+
+    <title>LavaGo</title>
+</head>
+<body>
+    <header></header>
+    <main>
+    <article>
+        <h1>LavaGo</h1>
+    </article>
+    <section class="caja-autos">
+            <article>
+                <h2 class="subtitulo">
+                    Registrar Vehículo
+                </h2>
+                <hr class="hr">
+        </article>
+        <form action="">
+            <article class="caja-inputs">
+            <label for="marca">Marca del vehiculo:</label>
+            <input class="inputs" type="text"  id="marca" placeholder="Toyota">
+            </article>
+
+            <article class="caja-inputs">
+            <label for="duenio" class="label">Dueño del vehiculo:</label>
+            <input class="inputs" type="text"id="duenio" placeholder="Dueño">
+            </article>
+
+            <article class="caja-inputs">
+            <label for="precio" class="label">Precio:</label>
+            <input class="inputs" type="number" id="precio" placeholder="$0.00">
+            </article>
+
+            <article class="caja-check">
+            <label for="pago">Pagado</label>
+            <input type="checkbox" id="pago">
+            </article>
+            <button type="button" id="btnagregar" class="btn-agregar">Agregar</button>
+
+        </form>
+    </section>
+
+    <section>
+            <article class="lista-de-autos">
+                <h2 class="subtitulo">
+                    Registro de Vehículos
+                </h2>
+                <hr class="hr">
+        
+        <ul id="listaAutos" >
+
+        </ul>
+        </article>
+
+        <article class="container-caja-resumen">
+
+            <h2 class="subtitulo">
+                    Resumen de Caja
+                </h2>
+                <hr class="hr">
+        <article class="caja-botones">
+        <button type="button" id="btnCobrado">Total Cobrado</button>
+        <button type="button" id="btnPendiente">Total Pendiente</button>
+        <button type="button" id="btnGeneral">Total General</button>
+        </article>
+
+        <article class="resultados">
+                <p>Total cobrado: <span id="resultadoCobrado"></span></p>
+                <p>Total pendiente: <span id="resultadoPendiente"></span></p>
+                <p class="total-destacado">Total general: <span id="resultadoGeneral"></span></p>
+        </article>
+
+        
+
+        <article class="caja-btn-reset">
+            <button type="button" id="btnReinicio" class="btn-reset">Reiniciar Jornada</button>
+
+        </article>
+        </article>
+    </section>
+
+
+    </main>
+
+    <footer>
+        <p>Desarrollado por Josè Luis Mèlida — Desarrollo Web| v1.0💻</p>
+    </footer>
+
+</body>
+<script src="javascript.js"></script>
+</html>
