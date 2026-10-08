@@ -111,6 +111,20 @@ background-color: #00000091;
 }
 
 
+.btn_edit{
+    display: flex;
+    justify-content: space-evenly;
+    padding: 8px 0px;
+}
+.btn_edit button{
+    border: solid 1px  rgb(68, 212, 248);
+    margin: 7px 0px;
+    padding: 3px;
+    border-radius: 6px;
+    font-family: monospace;
+    background: linear-gradient(0deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+    color: white;
+}
 
 /* seccion de resumen de autos */
 .container-caja-resumen{

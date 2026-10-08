@@ -22,16 +22,48 @@ function dibujarAutos() {
      // Vaciamos el <ul> antes de repintarlo, para no duplicar autos ya mostrados
     ul.innerHTML="";
 
-    autos.forEach(function(num){
+    autos.forEach(function(num, indice){
         let li= document.createElement("li")
         li.innerHTML=`
                         Marca: ${num.marca}
                         Dueño: ${num.dueño}
                         Precio: ${num.precio}
-                        Estado:${num.pagado ? "pagado" : "pendiente"}
-
+                        Estado:${num.pagado ? "Efectivo" : "transf."}
+                        <article class="btn_edit">
+                        <button type="button" class="btn-editar-precio">Editar Precio</button>
+                        <button type="button" class="btn-editar-estado">Editar Estado</button>
+                        </article>
+                        
                     `
-                
+        
+        let btnEditEstado= li.querySelector(".btn-editar-estado");
+        
+        btnEditEstado.addEventListener("click",()=>{
+            autos[indice].pagado=!autos[indice].pagado;
+            localStorage.setItem("lavaGo",JSON.stringify(autos));
+            dibujarAutos()
+            
+        })
+
+        let btnEditPrecio= li.querySelector(".btn-editar-precio");
+
+        btnEditPrecio.addEventListener("click",()=>{
+            let precioNuevo= parseFloat(prompt("ingresa el nuevo precio"));
+            
+            if (isNaN(precioNuevo)) {
+                alert("Tenes que colocar el precio, capo!")
+                return
+            }
+            
+            autos[indice].precio=precioNuevo;
+            
+            localStorage.setItem("lavaGo",JSON.stringify(autos));
+            dibujarAutos()
+        })
+
+
+
+
         ul.appendChild(li)
 
     })
