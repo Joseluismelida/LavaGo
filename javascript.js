@@ -1,5 +1,5 @@
 // Array que funciona como "base de datos" en memoria: cada elemento va a ser un objeto
-// que representa un auto lavado (marca, dueño, precio y si pagó o no)
+// que representa un auto lavado (marca, dueño, precio y si es efectivo o transferencia)
 let autos=[];
 
 //recuperando el array del localStorage
@@ -28,7 +28,7 @@ function dibujarAutos() {
                         Marca: ${num.marca}
                         Dueño: ${num.dueño}
                         Precio: ${num.precio}
-                        Estado:${num.pagado ? "Efectivo" : "transf."}
+                        Estado:${num.esEfectivo ? "Efectivo" : "transf."}
                         <article class="btn_edit">
                         <button type="button" class="btn-editar-precio">Editar Precio</button>
                         <button type="button" class="btn-editar-estado">Editar Estado</button>
@@ -39,7 +39,7 @@ function dibujarAutos() {
         let btnEditEstado= li.querySelector(".btn-editar-estado");
         
         btnEditEstado.addEventListener("click",()=>{
-            autos[indice].pagado=!autos[indice].pagado;
+            autos[indice].esEfectivo=!autos[indice].esEfectivo;
             localStorage.setItem("lavaGo",JSON.stringify(autos));
             dibujarAutos()
             
@@ -84,7 +84,7 @@ btnAgregar.addEventListener("click",()=>{
     let precioAuto= parseFloat(document.querySelector("#precio").value);
 
      // .checked (no .value) porque es un checkbox: devuelve true o false directamente
-    let pagoAuto= document.querySelector("#pago").checked;
+    let efectivoAuto= document.querySelector("#pago").checked;
     
         // Armamos un objeto con los 4 datos leídos, representando "un auto" completo
 
@@ -92,7 +92,7 @@ btnAgregar.addEventListener("click",()=>{
         marca:marcaAuto,
         dueño: duenioAuto,
         precio:precioAuto,
-        pagado:pagoAuto
+        esEfectivo:efectivoAuto
     }
     
     if (isNaN(auto.precio)) {
@@ -123,58 +123,58 @@ btnAgregar.addEventListener("click",()=>{
         precioAuto= document.querySelector("#precio");
         precioAuto.value="";
 
-        pagoAuto= document.querySelector("#pago");
-        pagoAuto.checked=false; //solo devuelve dos valores (true/false). como tenemos que vaciarlo lo dejamos en false
+        efectivoAuto= document.querySelector("#pago");
+        efectivoAuto.checked=false; //solo devuelve dos valores (true/false). como tenemos que vaciarlo lo dejamos en false
 })
 
-// Referencia al botón "Total Cobrado"
-let btnTotalCobrado= document.querySelector("#btnCobrado");
+// Referencia al botón "Total Efectivo"
+let btnTotalEfectivo= document.querySelector("#btnEfectivo");
 
-btnTotalCobrado.addEventListener("click",()=>{
-    // Nos quedamos solo con los autos que ya fueron pagados
-    let autosPagados=autos.filter(function (auto) {
-        return auto.pagado
+btnTotalEfectivo.addEventListener("click",()=>{
+    // Nos quedamos solo con los autos pagados en efectivo
+    let autosEfectivo=autos.filter(function (auto) {
+        return auto.esEfectivo
         
     })
       // Sumamos los precios de esos autos filtrados, arrancando desde 0
-    let totalCobrado=autosPagados.reduce((acumulador,num)=> acumulador+num.precio,0);
+    let totalEfectivo=autosEfectivo.reduce((acumulador,num)=> acumulador+num.precio,0);
 
-    // let totalCobrado=autosPagados.reduce(function(acumulador, num){
+    // let totalEfectivo=autosEfectivo.reduce(function(acumulador, num){
     //     return acumulador+ num.precio
     // },0)
-    // console.log(totalCobrado);
+    // console.log(totalEfectivo);
     
-    let spanCobrado= document.querySelector("#resultadoCobrado");
+    let spanEfectivo= document.querySelector("#resultadoEfectivo");
 
       // Mostramos el total calculado en pantalla
-    spanCobrado.textContent=`
-                                $:${totalCobrado}
+    spanEfectivo.textContent=`
+                                $:${totalEfectivo}
     `;
     
 })
 
-// Referencia al botón "Total Pendiente"
-let btnPendiente= document.querySelector("#btnPendiente");
+// Referencia al botón "Total Transferencia"
+let btnTotalTransferencia= document.querySelector("#btnTransferencia");
 
-btnPendiente.addEventListener("click",()=>{
-    let autosPendientes=autos.filter(function(pendiente) { //usamos.filter(crea un array nuevo secando datos que cumplan la condicion, en este caso trae valores del array original y mostrara solo los que cumplan la condicion)
-        return !pendiente.pagado // Nos quedamos solo con los autos que TODAVÍA no pagaron (por eso el !)
+btnTotalTransferencia.addEventListener("click",()=>{
+    let autosTransferencia=autos.filter(function(auto) { //usamos.filter(crea un array nuevo secando datos que cumplan la condicion, en este caso trae valores del array original y mostrara solo los que cumplan la condicion)
+        return !auto.esEfectivo // Nos quedamos solo con los autos que TODAVIA NO son efectivo, o sea transferencia (por eso el !)
     })
 
-     // Sumamos los precios de los autos pendientes
-    let totalPendiente=autosPendientes.reduce((acumulador,num)=>acumulador+num.precio,0);
+     // Sumamos los precios de los autos por transferencia
+    let totalTransferencia=autosTransferencia.reduce((acumulador,num)=>acumulador+num.precio,0);
 
-    let spanPendiente=document.querySelector("#resultadoPendiente");
+    let spanTransferencia=document.querySelector("#resultadoTransferencia");
     
-    spanPendiente.textContent=`
-                                $:${totalPendiente}
+    spanTransferencia.textContent=`
+                                $:${totalTransferencia}
                                     `
 })
 
 // Referencia al botón "Total General"
 let btnGeneral= document.querySelector("#btnGeneral");
 
-// Sumamos TODOS los precios del array, sin filtrar (cobrados + pendientes)
+// Sumamos TODOS los precios del array, sin filtrar (efectivo + transferencia)
 btnGeneral.addEventListener("click",()=>{
     let totalGeneral=autos.reduce((acumulador,num)=> acumulador+num.precio,0)
     
@@ -198,11 +198,11 @@ btnReinicio.addEventListener("click",()=>{
 })
 
 function limpiarResultados() {
-        let resetCobrado= document.querySelector("#resultadoCobrado");
-    resetCobrado.textContent=``;
+        let resetEfectivo= document.querySelector("#resultadoEfectivo");
+    resetEfectivo.textContent=``;
 
-    let resetPendiente= document.querySelector("#resultadoPendiente");
-    resetPendiente.textContent=``;
+    let resetTransferencia= document.querySelector("#resultadoTransferencia");
+    resetTransferencia.textContent=``;
 
     let resetGeneral= document.querySelector("#resultadoGeneral");
     resetGeneral.textContent=``;

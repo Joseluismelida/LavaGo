@@ -77,11 +77,11 @@ form{
 .caja-autos{
 border: solid 2px rgb(68, 212, 248);
 border-radius: 5px;
-margin: 20px 10px;
+margin: 20px auto;
 padding: 0px 15px 15px;
 box-shadow: rgb(68, 212, 248) 0px 0px 15px;
 background-color: #00000091;
-
+max-width: 600px;
 
 }
 
@@ -108,6 +108,7 @@ background-color: #00000091;
     width: 90%;
     list-style: none;
     color: white;
+    
 }
 
 
@@ -203,4 +204,19 @@ footer p{
     padding: 10px;
     text-align: center;
     font-family: fantasy;
+}
+
+
+/* responsive */
+.respon{
+display: flex;
+justify-content: center;
+flex-wrap: wrap;
+}
+
+@media (max-width:650px) {
+    .caja-autos{
+    margin: 20px 10px ;
+    
+}
 }
